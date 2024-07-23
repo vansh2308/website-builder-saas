@@ -1,5 +1,5 @@
 import { Contact, Lane, Notification, Prisma, Role, Tag, Ticket, User } from "@prisma/client";
-import { getAuthUserDetails, getMedia, getPipelineDetails, getTicketsWithTags, getUserPermissions } from "./queries";
+import { _getTicketsWithAllRelations, getAuthUserDetails, getMedia, getPipelineDetails, getTicketsWithTags, getUserPermissions } from "./queries";
 import { db } from "./db";
 import { z } from 'zod'
 import Stripe from "stripe";
@@ -134,3 +134,9 @@ export type Address = {
 
   export type PricesList = Stripe.ApiList<Stripe.Price>
   
+
+
+
+  export type TicketDetails = Prisma.PromiseReturnType<
+  typeof _getTicketsWithAllRelations
+>

@@ -400,6 +400,7 @@ enum Plan {
   price_1PfS3kRuBwQPyQCPGPE85AL2
 }
 
+
 model Subscription {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
