@@ -951,3 +951,30 @@ export const getFunnels = async (subacountId: string) => {
   
     return response
   }
+
+
+
+  export const getDomainContent = async (subDomainName: string) => {
+    const response = await db.funnel.findUnique({
+      where: {
+        subDomainName,
+      },
+      include: { FunnelPages: true },
+    })
+    return response
+  }
+  
+
+
+
+  export const getPipelines = async (subaccountId: string) => {
+    const response = await db.pipeline.findMany({
+      where: { subAccountId: subaccountId },
+      include: {
+        Lane: {
+          include: { Tickets: true },
+        },
+      },
+    })
+    return response
+  }
